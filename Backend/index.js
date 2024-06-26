@@ -3,13 +3,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import session from "express-session";
-import pg from "pg"; // Import pg as default
+import pg from "pg";
 import authRoutes from "./routes/authRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js";
 import likeRoutes from "./routes/likeRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 
-const { Pool } = pg; // Destructure Pool from pg
+const { Pool } = pg;
 
 dotenv.config();
 

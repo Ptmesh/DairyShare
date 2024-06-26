@@ -76,7 +76,7 @@ const Login = () => {
         }
       );
       toast.success("Login successful!");
-      navigate("/dashboard"); // Redirect to a dashboard or home page after login
+      navigate("/dashboard");
     } catch (error) {
       toast.error("There was an error logging in!");
       console.error("There was an error logging in!", error);
