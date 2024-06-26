@@ -4,6 +4,7 @@ import Register from "./Pages/Auth/Register";
 import About from "./Pages/Landing/About";
 import Contact from "./Pages/Landing/Contact";
 import Home from "./Pages/Landing/Home";
+import Dashboard from "./Pages/Software/Dashboard";
 function App() {
   return (
     <>
@@ -16,6 +17,9 @@ function App() {
         {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Software */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );
