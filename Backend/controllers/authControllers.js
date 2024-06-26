@@ -12,7 +12,28 @@ export const registerUser = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
-  // Implementation of login logic
+  const { email, password } = req.body;
+
+  try {
+    const result = await query("SELECT * FROM users WHERE email = $1", [email]);
+
+    if (result.rows.length === 0) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    const user = result.rows[0];
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+
+    if (!isMatch) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    req.session.userId = user.id;
+    res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 export const logoutUser = async (req, res) => {
