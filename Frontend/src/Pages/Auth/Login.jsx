@@ -60,7 +60,7 @@ const Text = styled.p`
   text-align: center;
 `;
 
-const Login = () => {
+const Login = ({ authenticate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -76,6 +76,8 @@ const Login = () => {
         }
       );
       toast.success("Login successful!");
+      console.log(response.data);
+      authenticate();
       navigate("/dashboard");
     } catch (error) {
       toast.error("There was an error logging in!");

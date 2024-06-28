@@ -36,12 +36,13 @@ app.use(
   session({
     store: new (pgSession(session))({
       pool,
+      tableName: "session", // This will create the table if it doesn't exist
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
+      secure: false, // Set to true if using HTTPS
       httpOnly: true,
     },
   })

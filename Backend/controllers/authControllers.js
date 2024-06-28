@@ -37,7 +37,6 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
-  // Implementation of logout logic
   req.session.destroy();
   res.status(200).json({ message: "Logout successful" });
 };
